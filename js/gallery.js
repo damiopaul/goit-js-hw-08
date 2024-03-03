@@ -67,24 +67,34 @@ const images = [
 const container = document.querySelector('.gallery');
 
 
+
 container.insertAdjacentHTML('beforeend', createMarkup(images));
 container.addEventListener('click', handleModalOpen);
 
+
+
+// function handleModalOpen(event) {
+//     if (event.currentTarget === event.target) return;
+//     const source = event.target.dataset.source;
+//     const instance = basicLightbox.create(`
+//     <div class="overlay">
+//     <div class="modal">
+//     <img src=${source}
+//     />
+// </div>
+// </div>
+//   `
+//   ).show()
+  
+  
+// }
 function handleModalOpen(event) {
     if (event.currentTarget === event.target) return;
-    event.preventDefault(); 
-    const source = event.target.dataset.source;
+    event.preventDefault();
     const instance = basicLightbox.create(`
-    <div class="overlay">
-    <div class="modal">
-    <img src=${source}
-    />
-</div>
-</div>
-  `
-  ).show()
-  
-  
+    <img src="${event.target.dataset.source}" width="1112" height="640">
+`)
+instance.show()
 }
 
 function createMarkup(arr) {
